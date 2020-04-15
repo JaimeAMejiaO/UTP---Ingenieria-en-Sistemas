@@ -1,0 +1,33 @@
+#lang racket
+(define (principal cad)
+  (display "Programa para recibir una nombre completo a este se le convertirá cada vocal a mayuscula
+Digite una cadena a la cual se le cambiará cada vocal minuscula por una mayuscula:")
+  (set! cad (read))
+  (validacion cad)
+  )
+
+(define (validacion cad)
+  (if (> (string-length cad) 100)
+      (display "Ha superado el limite de caracteres")
+      (cambioVocales cad 0 (make-string (string-length cad)))
+      )
+  )
+
+(define (cambioVocales cad pos cad2)
+  (if (< pos (string-length cad))
+      (if (or (equal? (string-ref cad pos) #\a) (equal? (string-ref cad pos) #\e) (equal? (string-ref cad pos) #\i) (equal? (string-ref cad pos) #\o) (equal? (string-ref cad pos) #\u))
+          (begin (string-set! cad2 pos (integer->char (- (char->integer (string-ref cad pos)) 32)))
+                 (cambioVocales cad (+ pos 1) cad2)
+                 )
+          (if (or (equal? (string-ref cad pos) #\á)(equal? (string-ref cad pos) #\é)(equal? (string-ref cad pos) #\í)(equal? (string-ref cad pos) #\ó)(equal? (string-ref cad pos) #\ú))
+              (begin (string-set! cad2 pos (integer->char (- (char->integer (string-ref cad pos)) 32)))
+                     (cambioVocales cad (+ pos 1) cad2)
+                     )
+              (begin (string-set! cad2 pos (string-ref cad pos)) (cambioVocales cad (+ pos 1) cad2))
+              )
+          )
+      (display cad2)
+      )
+  )
+    
+(principal 0)

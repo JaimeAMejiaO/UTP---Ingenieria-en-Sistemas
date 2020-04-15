@@ -1,0 +1,21 @@
+#lang racket
+(define (conversionDinero)
+  (define v 0)
+  (display "Programa para conversión de pesos colombianos a euros y dolares")
+  (display "Digite el valor de pesos colombianos a convertir:")
+  (set! v (read))
+  (display "El valor de")
+  (display v)
+  (display " en euros son ")
+  (display (conversionAEuros v))
+  (display " y en dolares son")
+  (display (conversionADolares v))
+)
+
+(define (conversionAEuros x)
+  (/ x 3700)
+)
+
+(define (conversionADolares x)
+  (/ x 3400)
+)

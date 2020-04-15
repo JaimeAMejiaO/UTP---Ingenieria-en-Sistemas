@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bolita sin var ni if y else</title>
+	</head>
+	<body style="background-color: lightsalmon;">
+		<center><h1>Circulos hechos sin variables, ni if ni else</h1></center>
+	 	<canvas id="c" width="2400" height="500"></canvas>
+	 	<script type="text/javascript">
+	 
+	 	var canvas, ctx;
+	 
+		 function drawBall(x,y,r,color){
+		  ctx.fillStyle = color;
+		  ctx.beginPath();
+		  ctx.arc(x, y, r, 0, Math.PI*2, true);
+		  ctx.closePath();
+		  ctx.fill();
+		 }
+
+		 function clear(){
+		  canvas.width =  canvas.width;
+		 }
+		 
+		 function init(){
+		  canvas = document.getElementById("c");
+		  ctx = canvas.getContext("2d");
+		  setInterval(loop, 1000/30);
+		 }
+		 
+		 function loop(){
+		  clear();
+		  drawBall(900,100,20,"white");
+		  drawBall(950,100,20,"white");
+		  drawBall(1000,100,20,"white");
+		  drawBall(900,150,20,"white");
+		  drawBall(950,150,20,"white");
+		  drawBall(1000,150,20,"black");
+		  drawBall(900,200,20,"white");
+		  drawBall(950,200,20,"black");
+		  drawBall(1000,200,20,"white");
+		  drawBall(900,250,20,"white");
+		  drawBall(950,250,20,"black");
+		  drawBall(1000,250,20,"black");
+		  drawBall(900,300,20,"black");
+		  drawBall(950,300,20,"white");
+		  drawBall(1000,300,20,"white");
+		  drawBall(900,350,20,"black");
+		  drawBall(950,350,20,"white");
+		  drawBall(1000,350,20,"black");
+		  drawBall(900,400,20,"black");
+		  drawBall(950,400,20,"black");
+		  drawBall(1000,400,20,"white");
+		  drawBall(1000,450,20,"black");
+		  drawBall(900,450,20,"black");
+		  drawBall(950,450,20,"black");
+		  /*Carita*/
+			ctx.beginPath();
+	    	ctx.arc(37,37,13,Math.PI/7,-Math.PI/7,false);
+	    	ctx.lineTo(31,37);
+	    	ctx.fill();
+		 }
+		 
+		 window.onload = init;
+		  
+ 	</script>
+ 	<center>
+ 	<hr>
+		<input title="Enlace de página local" type="button"
+		style='width:320px; height:40px; color: white; background-color:#24292E' value="Volver al menú"
+		onclick="window.open('index.html','_self')" />
+	<hr>
+	</center>
+		<footer style='text-align:center;'>
+			<p style="font-size: 12px">EST. Jaime Andrés Mejia Osorio</p>
+			<p style="font-size: 12px">Cod.: 1004776790</p>
+			<p style="font-size: 12px">Ingenieria de Sistemas y Computación</p>
+			<a style="font-size: 12px" href="https://www.utp.edu.co">Visita el sitio web de la UTP</a>
+		</footer>
+		<hr>
+	</body>
+</html>

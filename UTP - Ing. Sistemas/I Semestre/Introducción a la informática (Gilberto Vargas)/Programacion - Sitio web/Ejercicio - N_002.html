@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Ejercicio número 2</title>
+		<!--
+			Usamos la etiqueta <link>, que no necesita cierre de etiqueta, para hacer que en la pestaña del navegador en el que esté se vea al lado del nombre de la misma, una imagen. En este caso la llamamos con el parametro href="" para buscar la carpeta y el archivo y usamos el parametro rel="" para definir que la usamos para especificamente ese lugar.
+		-->
+		<link rel="shortcut icon" href="imagenes/utp.png">
+		<meta charset="utf-8">
+		<style type="text/css">
+			#centrar{
+					text-align: center;
+					color: white;
+			}
+
+			body{
+				background-color: #900C3F;
+			}
+
+			p{
+				color: white;
+			}
+
+			#primerEjemplo{
+				color: green;
+			}
+
+			#segundoEjemplo{
+				color: red;
+			}
+
+			#cuartoEjemplo{
+				font-size: 30px;
+				color: white;
+				background-color: black; 
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+			Usamos la etiqueta <hr> de manera que se genera una linea horizontal, mas no llena por completo la anchura de la pagina.
+			Como sabemos que cualquier tipo de programación se lea de arriba a abajo, entonces pondrá una linea antes/despues de lo primero que se vaya a mostrar en la pagina 
+		-->
+		<hr>
+		<h1 id="centrar">Atributos HTML</h1>
+		<!-- 
+			Usaremos 4 parametros de imagen para que de este modo podamos organizarla bien. 
+			*** hspace="" nos va a servir para darle un espacio en ambas partes horizontales de la imagen
+			*** src="" es para saber de donde viene la imagen, en este caso buscamos la carpeta y luego ponemos el nombre del archivo junto 		a la extension
+			*** title="" nos sirve para que cuando se pase por encima el cursor, nos de informacion de la imagen (normalmente es corta pero esta vez decidí dar un alargue de la informacion que aparece)
+			*** alt="" es para que cuando la imagen no se cargue, que aparezca cierto texto
+		-->
+		<p>Por medio de una solicitud, se ponen 3 imagenes correspondientes de la carpeta compartida por el profesor, si pone el mouse encima de cada imagen dará una pequeña descripción de lo que es.</p>
+			<img hspace="90" alt="Imagen de un balón de fútbol" src="imagenes/balon-futbol.jpg" title="El balón de fútbol utilizado en competiciones oficiales es regulado en sus medidas por la FIFA. Tiene forma de icosaedro truncado en un 99.9%, una circunferencia entre 68 y 70 centímetros y un peso entre 410 y 450 gramos.">
+			<img hspace="90" alt="Imagen de un tenni deportivo" src="imagenes/tenis.jpg" title="El calzado deportivo es un tipo de calzado utilizado para practicar deporte. Generalmente, está fabricado en piel, lona y/o materiales sintéticos y tiene suela de goma para favorecer una mayor adherencia y flexibilidad.">
+			<img hspace="90" alt="Imagen deunas raquetas de tenis con una pelota de tenis" src="imagenes/raquetas.jpg" title="La raqueta es un instrumento deportivo que consiste en un marco con un aro abierto y con una especie de red o caucho que lo cubre.">
+		<hr>
+		<p>La imagen siguiente es una extension ".gif", por lo tanto es un objeto animado y tendrá movimiento dentro de la pagina. Funciona igualmente con la etiqueta < img ></p>
+		<center>
+		<img src="imagenes/baloncesto.gif" alt="Animacion de un balon de baloncesto" title="Un balón de baloncesto es una pelota esférica que se usa para jugar al baloncesto. Sus dimensiones y peso varían dependiendo de la categoría de los practicantes, estando entre los 56 cm de circunferencia para las categorías más pequeñas y los 74-76 en categorías absolutas masculinas. El estándar de un balón en la NBA es, por ejemplo, de 75 centímetros.">
+		</center>
+		<hr>
+		<h1 id="primerEjemplo">Texto con estilo desde un id</h1>
+		<h2 id="segundoEjemplo">Fruta: Manzana</h2>
+		<p id="tercerEjemplo" title="Un texto donde se usan tributos de la etiqueta <p>" aling="center">Tamaño y caracteristicas de texto</p>
+		<p id="cuartoEjemplo">Texto con atributos de color y de tamaño</p>
+		<hr>
+		<!-- 
+			Como bien su nombre lo identifica (traducido al español), es pie de pagina que se identifica con la etiqueta <footer> (Que se cierra con </footer>), y tiene una finalizada literal de servir para lo que dice, le ponemos un parametro de style="text-aling:center;" para que todo lo que haya dentro de si mismo se alinee (Aunque podiamos utilizar el id que teniamos de centrar, pero quise usar este parametro para identificarlo de otro modeo)
+			El parametro de style="font-size: 12px;" dentro de las etiquetas <p> lo usamos para hacer que se vea mas pequeño que sin ningun parametro
+		-->
+		<center>
+		<hr>
+			<input title="Enlace de página local" type="button"
+			style='width:320px; height:40px; color: white; background-color:#24292E' value="Volver al menú"
+			onclick="window.open('index.html','_self')" />
+		<hr>
+		</center>
+		<footer style='text-align:center;'>
+			<p style="font-size: 12px">EST. Jaime Andrés Mejia Osorio</p>
+			<p style="font-size: 12px">Cod.: 1004776790</p>
+			<p style="font-size: 12px">Ingenieria de Sistemas y Computación</p>
+			<a style="font-size: 12px" href="https://www.utp.edu.co">Visita el sitio web de la UTP</a>
+		</footer>
+		<hr>
+	</body>
+</html>

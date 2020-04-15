@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>Bolita con var y if/else</title></head>
+<body style="background-color: #D8BFD8;">
+ <center><h1>Circulos hechos con variables  con if y else</h1></center>
+ <canvas id="c" width="1900" height="620"></canvas>
+ <script type="text/javascript">
+ 
+ var canvas, ctx;
+ 
+ function drawBall(x,y,r,color){
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI*2, true);
+  ctx.closePath();
+  ctx.fill();
+ }
+
+ function clear(){
+  canvas.width =  canvas.width;
+ }
+ 
+ function init(){
+  canvas = document.getElementById("c");
+  ctx = canvas.getContext("2d");
+  setInterval(loop, 1000/30);
+ }
+ 
+ function loop(){
+  clear();
+  var c, f;
+  var inicio = 100;
+  var radio= 25;
+  var delta = 80;
+  var elcolor = "#BA55D3";
+  for (c = 0; c <= 2; c = c + 1)
+  {
+    for (f = 0; f <= 7; f = f + 1)
+    {
+      if (( f == 1 && c == 2) ||
+        ( f == 2 && c == 1 ) ||
+        ( f == 3 && c == 2 ) ||
+        ( f == 3 && c == 1 ) ||
+        ( f == 4 && c == 0 ) ||
+        ( f == 5 && c == 2 ) ||
+        ( f == 5 && c == 0 ) ||
+        ( f == 6 && c == 0 ) ||
+        ( f == 6 && c == 1 ) ||
+        ( f == 7 && c == 0 ) ||
+        ( f == 7 && c == 1 ) ||
+        ( f == 7 && c == 2 )) 
+        elcolor = "black";
+      else 
+        elcolor = "white";
+        drawBall(860 + c*delta, inicio + f*delta, radio, elcolor);
+    }
+ }
+}
+ 
+ window.onload = init;
+  
+ </script>
+ <center>
+  <hr>
+    <input title="Enlace de página local" type="button"
+    style='width:320px; height:40px; color: white; background-color:#24292E' value="Volver al menú"
+    onclick="window.open('index.html','_self')" />
+  <hr>
+</center>
+    <footer style='text-align:center;'>
+      <p style="font-size: 12px">EST. Jaime Andrés Mejia Osorio</p>
+      <p style="font-size: 12px">Cod.: 1004776790</p>
+      <p style="font-size: 12px">Ingenieria de Sistemas y Computación</p>
+      <a style="font-size: 12px" href="https://www.utp.edu.co">Visita el sitio web de la UTP</a>
+    </footer>
+    <hr>
+</body>
+</html>

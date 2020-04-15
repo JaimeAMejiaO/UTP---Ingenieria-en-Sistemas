@@ -1,0 +1,14 @@
+1. Desarrollar una función que reciba un número y una lista de números, para
+determinar sí el símbolo esta en la lista.
+2. Implementar una función que reciba una lista, y genere otra lista invertida respecto de la anterior.
+3. Desarrollar una función que toma una lista de números y calcula el promedio
+4. Crear una función que determine si dos listas son iguales.
+5. Desarrollar una función que tome un símbolo y una lista de símbolos y
+determine cuantas veces aparece el símbolo en la lista.
+6. Realizar una función que toma un elemento y una lista de números y
+retorna la lista sin el elemento.
+7. Realizar una función que toma una lista de números y dos números (nuevo y viejo) y genera otra lista donde las apariciones del viejo son reemplazadas por las del nuevo.
+8. Realizar una función que encuentre todos los divisores de un número y los retorne en una lista.
+9. Dada una lista de estudiantes de la universidad con los campos nombre, código y curso, realizar una función que dado un código determine si el estudiante se encuentra matriculado en la universidad. Un estudiante se encuentra matriculado si tiene asignado un curso.
+10. Dada un directorio telefónico de amigos donde cada amigo tiene nombre, dirección y teléfono, crear una función que dado el nombre devuelva el numero telefónico del amigo.
+11. Implementar un diccionario de sinónimos, donde dada una palabra la función devuelva tres sinónimos de la palabra.

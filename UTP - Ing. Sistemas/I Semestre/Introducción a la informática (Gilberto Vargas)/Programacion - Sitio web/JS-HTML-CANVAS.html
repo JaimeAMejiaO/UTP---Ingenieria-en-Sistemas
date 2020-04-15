@@ -1,0 +1,299 @@
+<!doctype html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>Programación Juego del ahorcado JS & Canvas</title>
+			<link rel="shotcut icon" href="https://img2.freepng.es/20190207/ouo/kisspng-elmo-clip-art-javascript-github-perl-elmo-png-hd-imagenes-de-elmo-4k-ultra-hd-qz136-mob-5c5c362890c620.189331571549547048593.jpg">
+			<style type="text/css">
+				body {
+					width: 960px;
+					margin: 0 auto;
+					background-color: floralwhite;
+					font-family: "Trebuchet MS", Helvetica, sans-serif;
+				}
+	            h1{
+	                text-align: center;
+	            }
+	            h2{
+	                text-align: left;
+	            }
+	            footer{
+	            	text-align: center;
+	            }
+	            #pantalla{
+	                border: groove 8px white;
+	                background: grey;   
+	            }
+	            #boton{
+	                background-color: black;
+	                color: white;
+	                font-size: 20px;
+	                text-align: center;
+	                font-weight: bolder;
+	                padding: 3px;
+	                border: solid 2px black;
+	            }
+			</style>
+		</head>
+	
+		<body bgcolor="#E3AA9E"> 
+		
+		<center><u><h1>Inicio Programación con HTML, JS, CANVAS</h1></u></center>
+		
+		<p style="text-align:center;">Pagina de ejemplo en la que veremos algo de HTML, JS, CANVAS con su definición y ejemplo práctico</p>
+		
+		<u><h2>Definición de HTML</h2></u>
+		<p>HTML5 es la última versión de HiperText Markup Language, que es el código que hace la parte fisica de una página, es decir su cuerpo que verá la persona sin tener dentro de sí algún programa de lenguaje HTML, aún así cabe decir que puede contener otros programas como CANVAS, JS, CSS</p>
+		<center><img src="https://i.blogs.es/162157/650_1000_html5_logo_512-1/450_1000.png" width="225" height="225"></center>
+		<u><h2>Definición de JS</h2></u>
+		<p>JavaScript o JS es un lenguaje de programación para la web, donde se permite dar cambios a HTML y CSS donde se calcula, manipula y validan datos. Es la programación detrás de los sitios web, pero también en sofware de escritorio y servidores usan este lenguaje, siendo elmas conocido el "Node.js" y algunas bases de datos. ECMAScript es su nombre oficial.</p>
+		<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png" width="225" height="225"></center>
+		<u><h2>Definición de CANVAS</h2></u>
+		<p>Se traduce "lienzo" al español y se convirtió un elemento HTML incorporado a HTML5 y su funcionamiento permite que la generación de gráficos dinámicamente por medio de un script (comando de órdenes). Tambien permite la renderización de gráficos 2D y mapas de bits, como también animaciones de gráficos.</p>
+		<center><img src="https://s3-us-west-2.amazonaws.com/devcodepro/media/tutorials/introduccion-a-canvas-de-html5-t1.png" width="400" height="225"></center>
+
+
+		<u><h1>Juego del ahorcado donde hay uso de JS y CANVAS</h1></u>
+		<canvas id="pantalla" width="960px" height="450px">
+			Tu navegador no soporta CANVAS
+		</canvas>
+		<button id="boton" type="reset" onclick="javascript:window.location.reload();">Volver a jugar</button>
+		<script>
+            
+            /* Variables */
+            var ctx;
+            var canvas;
+            var palabra;
+            var letras = "QWERTYUIOPASDFGHJKLÑZXCVBNM";
+            var colorTecla = "black";
+            var colorMargen = "lightgray";
+            var inicioX = 200;
+            var inicioY = 300;
+            var lon = 35;
+            var margen = 20;
+            /* Arreglos */
+            var teclas_array = new Array();
+            var letras_array = new Array();
+            var palabras_array = new Array();
+            /* Variables de control */
+            var aciertos = 0;
+            var errores = 0;
+             
+            /* Palabras */
+            palabras_array.push("PATATA"); 
+            palabras_array.push("ÑE");
+            palabras_array.push("HTML5"); 
+            palabras_array.push("JAVASCRIPT"); 
+            palabras_array.push("CANVAS"); 
+            palabras_array.push("INTRODUCCION"); 
+            palabras_array.push("INFORMATICA"); 
+            palabras_array.push("INDUCCION"); 
+            palabras_array.push("CODIGO"); 
+            palabras_array.push("BINARIO"); 
+            palabras_array.push("RECURSIVIDAD"); 
+            palabras_array.push("BACKUS"); 
+            palabras_array.push("NAUR"); 
+            palabras_array.push("CICLOS"); 
+            palabras_array.push("BUCLES"); 
+            palabras_array.push("INFINITO"); 
+            palabras_array.push("CONOCIMIENTO"); 
+			palabras_array.push("PROGRAMACION");
+                    
+            /* Objetos */
+            function Tecla(x, y, ancho, alto, letra){
+                this.x = x;
+                this.y = y;
+                this.ancho = ancho;
+                this.alto = alto;
+                this.letra = letra;
+                this.dibuja = dibujaTecla;
+            }
+            
+            function Letra(x, y, ancho, alto, letra){
+                this.x = x;
+                this.y = y;
+                this.ancho = ancho;
+                this.alto = alto;
+                this.letra = letra;
+                this.dibuja = dibujaCajaLetra;
+                this.dibujaLetra = dibujaLetraLetra;
+            }
+           
+            
+            /* Dibujar Teclas*/
+            function dibujaTecla(){
+                ctx.fillStyle = colorTecla;
+                ctx.strokeStyle = colorMargen;
+                ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+                ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+                
+                ctx.fillStyle = "white";
+                ctx.font = "bold 20px courier";
+                ctx.fillText(this.letra, this.x+this.ancho/2-5, this.y+this.alto/2+5);
+            }
+            
+            /* Dibua la letra y su caja */
+            function dibujaLetraLetra(){
+                var w = this.ancho;
+                var h = this.alto;
+                ctx.fillStyle = "black";
+                ctx.font = "bold 40px Courier";
+                ctx.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
+            }
+            function dibujaCajaLetra(){
+                ctx.fillStyle = "white";
+                ctx.strokeStyle = "black";
+                ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+                ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+            }
+             /* Distribuir nuestro teclado con sus letras respectivas al acomodo de nuestro array */
+            function teclado(){
+                var ren = 0;
+                var col = 0;
+                var letra = "";
+                var miLetra;
+                var x = inicioX;
+                var y = inicioY;
+                for(var i = 0; i < letras.length; i++){
+                    letra = letras.substr(i,1);
+                    miLetra = new Tecla(x, y, lon, lon, letra);
+                    miLetra.dibuja();
+                    teclas_array.push(miLetra);
+                    x += lon + margen;
+                    col++;
+                    if(col==10){
+                        col = 0;
+                        ren++;
+                        if(ren==2){
+                            x = 280;
+                        } else {
+                            x = inicioX;
+                        }
+                    }
+                    y = inicioY + ren * 50;
+                }
+            }
+            
+            /* aqui obtenemos nuestra palabra aleatoriamente y la dividimos en letras */
+            function pintaPalabra(){
+                var p = Math.floor(Math.random()*palabras_array.length);
+                palabra = palabras_array[p];
+                var w = canvas.width;
+                var len = palabra.length;
+                var ren = 0;
+                var col = 0;
+                var y = 230;
+                var lon = 50;
+                var x = (w - (lon+margen) *len)/2;
+                for(var i=0; i<palabra.length; i++){
+                    letra = palabra.substr(i,1);
+                    miLetra = new Letra(x, y, lon, lon, letra);
+                    miLetra.dibuja();
+                    letras_array.push(miLetra);
+                    x += lon + margen;
+                }
+            }
+            
+            /* dibujar cadalzo y partes del pj segun sea el caso */
+            function horca(errores){
+                var imagen = new Image();
+                imagen.src = "imagenes/ahorcado"+errores+".png";
+                imagen.onload = function(){
+                    ctx.drawImage(imagen, 390, 0, 230, 230);
+                }
+            }
+            
+            /* ajustar coordenadas */
+            function ajusta(xx, yy){
+                var posCanvas = canvas.getBoundingClientRect();
+                var x = xx-posCanvas.left;
+                var y = yy-posCanvas.top;
+                return{x:x, y:y}
+            }
+            
+            /* Detecta tecla clickeada y la compara con las de la palabra ya elegida al azar */
+            function selecciona(e){
+                var pos = ajusta(e.clientX, e.clientY);
+                var x = pos.x;
+                var y = pos.y;
+                var tecla;
+                var bandera = false;
+                for (var i = 0; i < teclas_array.length; i++){
+                    tecla = teclas_array[i];
+                    if (tecla.x > 0){
+                        if ((x > tecla.x) && (x < tecla.x + tecla.ancho) && (y > tecla.y) && (y < tecla.y + tecla.alto)){
+                            break;
+                        }
+                    }
+                }
+                if (i < teclas_array.length){
+                    for (var i = 0 ; i < palabra.length ; i++){ 
+                        letra = palabra.substr(i, 1);
+                        if (letra == tecla.letra){ /* comparamos y vemos si acerto la letra */
+                            caja = letras_array[i];
+                            caja.dibujaLetra();
+                            aciertos++;
+                            bandera = true;
+                        }
+                    }
+                    if (bandera == false){ /* Si falla aumenta los errores y checa si perdio para mandar a la funcion gameover */
+                        errores++;
+                        horca(errores);
+                        if (errores == 5) gameOver(errores);
+                    }
+                    /* Borra la tecla que se a presionado */
+                    ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
+                    tecla.x - 1;
+                    /* checa si se gano y manda a la funcion gameover */
+                    if (aciertos == palabra.length) gameOver(errores);
+                }
+            }
+            
+            /* Borramos las teclas y la palabra con sus cajas y mandamos msj segun el caso si se gano o se perdio */
+            function gameOver(errores){
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "black";
+                ctx.font = "bold 50px Courier";
+                if (errores < 5){
+                    ctx.fillText("Muy bien, la palabra es: ", 110, 280);
+                } else {
+                    ctx.fillText("Lo sentimos, la palabra era: ", 110, 280);
+                }
+                ctx.font = "bold 80px Courier";
+                lon = (canvas.width - (palabra.length*48))/2;
+                ctx.fillText(palabra, lon, 380);
+                horca(errores);
+            }
+            
+            /* Detectar si se a cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o se le manda msj de error segun sea el caso */
+            window.onload = function(){
+                canvas = document.getElementById("pantalla");
+                if (canvas && canvas.getContext){
+                    ctx = canvas.getContext("2d");
+                    if(ctx){
+                        teclado();
+                        pintaPalabra();
+                        horca(errores);
+                        canvas.addEventListener("click", selecciona, false);
+                    } else {
+                        alert ("Error al cargar el contexto!");
+                    }
+                }
+            }
+        </script>
+        <center>
+        <hr>
+            <input title="Enlace de página local" type="button"
+            style='width:320px; height:40px; color: white; background-color:#24292E' value="Volver al menú"
+            onclick="window.open('index.html','_self')" />
+        <hr>
+        </center>
+        <footer style='text-align:center;'>
+            <p style="font-size: 12px">EST. Jaime Andrés Mejia Osorio</p>
+            <p style="font-size: 12px">Cod.: 1004776790</p>
+            <p style="font-size: 12px">Ingenieria de Sistemas y Computación</p>
+            <a style="font-size: 12px" href="https://www.utp.edu.co">Visita el sitio web de la UTP</a>
+        </footer>
+        <hr>
+		</body>
+	</html>
